@@ -3,11 +3,10 @@ import '../App.css';
 
 const Form = (props) => {
 
+    // Functions
     const inputTextHandler = (e) => {
-        console.log(e.target.value);
         props.setInputText(e.target.value);
     }
-
     const submitTodoHandler = (e) => {
         e.preventDefault();
         props.setTodos([
@@ -19,6 +18,9 @@ const Form = (props) => {
         ]);
         props.setInputText('');
     }
+    const filterHandler = (e) => {
+        props.setFilter(e.target.value);
+    }
 
     return(
         <form>
@@ -27,7 +29,7 @@ const Form = (props) => {
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
-                <select name="todos" className="filter-todo">
+                <select name="todos" className="filter-todo" onChange={filterHandler}>
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
